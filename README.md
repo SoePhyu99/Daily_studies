@@ -1,2 +1,2 @@
 # Daily_studies
-Ultimate Data Structures and Algorithms
+The Ultimate Data Structures and Algorithms
