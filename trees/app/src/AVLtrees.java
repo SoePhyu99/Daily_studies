@@ -11,6 +11,26 @@ public class AVLtrees {
         }
     }
 
+    private AVLnode check(AVLnode root) {
+        if(leftHeavy(root)){
+            System.out.println("Left Heavy");
+            if(balanceFactor(root.leftChild) < 0){
+                System.out.println("root.leftchild is right heavy");
+                root.leftChild = rotateLeft(root.leftChild);
+            }
+            return rotateRight(root);
+        }
+        if(rightHeavy(root)){
+            System.out.println("Right Heavy");
+            if(balanceFactor(root.rightChild) > 0){
+                System.out.println("rightchild is left heavy");
+                root.rightChild = rotateRight(root.rightChild);
+            }
+            return rotateLeft(root);
+        }
+        return root;
+    }
+
     private AVLnode root;
     public void insert(int value) {
         root = insert(value, root);
@@ -20,7 +40,6 @@ public class AVLtrees {
         if(root == null){
             return node;
         }
-        System.out.println(root.value + " height " + root.height);
         if(value < root.value){
             root.leftChild = insert(value, root.leftChild);
         }
@@ -28,7 +47,29 @@ public class AVLtrees {
             root.rightChild = insert(value, root.rightChild);
         }
         setHeight(root);
-        return root;
+        return check(root);
+    }
+    private AVLnode rotateLeft(AVLnode root) {
+        var newRoot = root.rightChild;
+
+        root.rightChild = newRoot.leftChild;
+        newRoot.leftChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
+    }
+    private AVLnode rotateRight(AVLnode root) {
+        var newRoot = root.leftChild;
+
+        root.leftChild = newRoot.rightChild;
+        newRoot.rightChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
     }
 
     private void setHeight(AVLnode node) {
