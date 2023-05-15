@@ -17,6 +17,9 @@ public class Heap {
         heap[0] = 0;
         bubbleDown();
     }
+    public boolean isEmpty() {
+        return count <= 0;
+    }
 
     private void bubbleUp(){
         var index = count - 1;
