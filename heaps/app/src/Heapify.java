@@ -19,6 +19,10 @@ public class Heapify {
         }
         return array;
     }
+    public int findLargestKth(int k) {
+        heapifyArray();
+        return array[k - 1];
+    }
     private void swap(int first, int second) {
         var temp = array[first];
         array[first] = array[second];
