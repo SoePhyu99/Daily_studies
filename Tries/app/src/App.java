@@ -3,8 +3,9 @@ public class App {
         Trie trie = new Trie();
         trie.insert("car");
         trie.insert("care");
+        trie.insert("carte");
         trie.insert("careful");
-        trie.autoComplete("car");
-        System.out.println();
+        var result = trie.findWords("car");
+        System.out.println(result);
     }
 }
