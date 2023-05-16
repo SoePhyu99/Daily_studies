@@ -6,6 +6,7 @@ public class App {
         trie.insert("carte");
         trie.insert("careful");
         var result = trie.findWords("car");
+        trie.countWords();
         System.out.println(result);
     }
 }

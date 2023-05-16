@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.swing.InputMap;
 
 public class Trie {
     private class Node{
@@ -111,6 +114,17 @@ public class Trie {
     
         if (!child.hasChild(ch) && !child.isEndOfWord)
             current.remove(ch);
+    }
+    public void countWords(){
+        countWords(root);
+        System.out.println("Count of words : " + indexs);
+    }
+    int indexs = 0;
+    private void countWords(Node root) {
+        for (var child : root.getChildren()) {
+            indexs++;
+            countWords(child);
+        }
     }
 
     public List<String> findWords(String prefix) {
