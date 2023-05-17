@@ -6,7 +6,7 @@ public class App {
         graph.addNode("May");
         graph.addEdge("June", "May");
         graph.addEdge("June", "July");
-        graph.remove("May");
+        graph.removeEdge("June", "May");
         graph.print();
         System.out.println();
     }
